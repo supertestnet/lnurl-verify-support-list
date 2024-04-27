@@ -86,7 +86,7 @@
             What is lnurl verify?
         </p>
         <p>
-            Lnurl verify is an extension of the lnurl paycode protocol. An <a href="https://github.com/lnurl/luds/blob/luds/06.md" target="_blank">lnurl paycode</a> is a static piece of text which encodes instructions for bitcoin wallets and other devices on how to request a lightning invoice from a lightning server. They are also the basis for <a href="https://lightningaddress.com/" target="_blank">lighting addresses</a>. Lnurl *verify* is an <a href="https://github.com/lnurl/luds/issues/182" target="_blank">extension</a> of the paycode protocol that allows a service to check the status of an invoice it previously requested, namely, whether that invoice is paid or not.
+            Lnurl verify is an extension of the lnurl paycode protocol. An <a href="https://github.com/lnurl/luds/blob/luds/06.md" target="_blank">lnurl paycode</a> is a static piece of text which contains instructions for how to request a lightning invoice from a lightning server. They are also the basis for <a href="https://lightningaddress.com/" target="_blank">lighting addresses</a>. Lnurl *verify* is an <a href="https://github.com/lnurl/luds/issues/182" target="_blank">extension</a> of the paycode protocol that allows a service to check the status of an invoice it previously requested, namely, whether that invoice is paid or not.
         </p>
         <p>
             The lnurl verify protocol is growing in usage as more lnurl servers add support. Some services also *only* work with lnurl-verify compatible lightning servers. Add support for lnurl verify and get on the "good list" of servers that support it!
@@ -109,6 +109,9 @@
                 </tr>
             </tbody>
         </table>
+        <p>
+            To add your service to the "good list," simply add support for lnurl verify, then modify <a href="https://github.com/supertestnet/lnurl-verify-support-list/blob/main/index.html" target="_blank">this file</a> to add yourself to the list, and do a pull request to update the file. Everyone can be on the good list!
+        </p>
         <script>
             services.forEach( item => {
                 if ( !item[ "proof" ] ) {
