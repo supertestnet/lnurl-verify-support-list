@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <script>
+            var services = [{
+                service: "Alby",
+                proof: "",
+            },{
+                service: "Stacker News",
+                proof: "",
+            },{
+                service: "Mutiny Plus",
+                proof: "",
+            },{
+                service: "Bitcoin Connect",
+                proof: "",
+            },{
+                service: "Scrib",
+                proof: "https://fanismichalakis.fr/posts/latest-strikes-23/#fnref:1",
+            },{
+                service: "Nostream",
+                proof: "https://powgs.freetls.fastly.net/mirror/nostream#accepting-payments",
+            }];
+        </script>
+        <style>
+            * {
+                box-sizing: border-box;
+                font-size: 1.15rem;
+                font-family: Arial, sans-serif;
+            }
+            html {
+                max-width: 800px;
+                padding: 3rem 1rem;
+                margin: auto;
+                line-height: 1.25;
+                padding: 0;
+            }
+            body {
+                margin: 3rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            input {
+                line-height: 1.25;
+                width: 100%;
+                height: 1.8rem;
+                font-size: 1.15rem;
+                border: 1px solid grey;
+            }
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            .greyish {
+                background-color: #dddddd;
+            }
+            @media screen and (max-width: 600px) {
+            }
+        </style>
+        <script>
+            var $ = document.querySelector.bind( document );
+            var $$ = document.querySelectorAll.bind( document );
+            var url_params = new URLSearchParams( window.location.search );
+            var url_keys = url_params.keys();
+            var $_GET = {}
+            for ( var key of url_keys ) $_GET[ key ] = url_params.get( key );
+        </script>
+    </head>
+    <body>
+        <h1>Lnurl Verify</h1>
+        <p style="font-weight: bold;">
+            What is lnurl verify?
+        </p>
+        <p>
+            Lnurl verify is a protocol for lnurl paycodes. An <a href="https://github.com/lnurl/luds/blob/luds/06.md" target="_blank">lnurl paycode</a> is a static piece of text which contains instructions for how to request a lightning invoice from a lightning server. They are also the basis for <a href="https://lightningaddress.com/" target="_blank">lighting addresses</a>. Lnurl *verify* is an <a href="https://github.com/lnurl/luds/issues/182" target="_blank">extension</a> of the paycode protocol that allows a service to check the status of an invoice it previously requested, namely, whether that invoice is paid or not.
+        </p>
+        <p>
+            The lnurl verify protocol is growing in usage as more lnurl servers add support. Some services also *only* work with lnurl-verify compatible lightning servers. Add support for lnurl verify and get on the "good list" of servers that support it!
+        </p>
+        <table class="supported">
+            <tbody>
+                <tr>
+                    <th>Lightning address server</th>
+                    <th>Lnurl-verify supported</th>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <table class="required">
+            <tbody>
+                <tr>
+                    <th>Service</th>
+                    <th>Lnurl-verify required</th>
+                    <th>Proof</th>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            services.forEach( item => {
+                if ( !item[ "proof" ] ) {
+                    var row = `
+                        <tr>
+                          <td>${item[ "service" ]}</td>
+                          <td>✓</td>
+                        </tr>
+                    `;
+                    $( '.supported' ).innerHTML += row;
+                } else {
+                    var row = `
+                        <tr>
+                          <td>${item[ "service" ]}</td>
+                          <td>✓</td>
+                          <td><a href="${item[ "proof" ]}" target="_blank">proof</a></td>
+                        </tr>
+                    `;
+                    $( '.required' ).innerHTML += row;
+                }
+            });
+            $$( '.supported tbody tr' ).forEach( ( item, index ) => {
+                if ( ( index % 2 ) ) item.classList.add( "greyish" );
+            });
+            $$( '.required tbody tr' ).forEach( ( item, index ) => {
+                if ( ( index % 2 ) ) item.classList.add( "greyish" );
+            });
+        </script>
+    </body>
+</html>
